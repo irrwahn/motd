@@ -36,7 +36,7 @@ static void print_usage( const char *argv0 )
 	const char *p = ( NULL == ( p = strrchr( argv0, '/' ) ) ) ? argv0 : p+1;
 	fprintf( stderr, 
 		"%s: Randomly pick motto of the day from an indexed plain text file.\n"
-		"Usage: %s [-r] [-d c] [-D n] [-i indexfile] [-t mottofile]\n"
+		"Usage: %s [-h] [-r] [-d c] [-D n] [-i indexfile] [-t mottofile]\n"
 		"  -d : Set record delimiter used in mottofile to single character c;\n"
 		"       default: '÷' (division sign, codepoint 247).\n"
 		"  -D : Same as -d, except set delimiter to codepoint number n.\n"
@@ -75,12 +75,8 @@ static long create_idx( FILE *txt_fp, const char *idx_path, const wint_t delim )
 	 * errors, the index file is not essential - we still want the 
 	 * side effect of counting mottos!
 	 */
-	if (   0 != stat( idx_path, &idx_stat ) 
-		|| S_ISREG( idx_stat.st_mode ) 
-		|| S_ISLNK( idx_stat.st_mode ) )
-	{
+	if ( 0 != stat( idx_path, &idx_stat ) || S_ISREG( idx_stat.st_mode ) )
 		idx_fp = fopen( idx_path, "w" );
-	}
 	
 	rewind( txt_fp );
 	while ( WEOF != wc )
@@ -115,7 +111,7 @@ static void motd( const char *txt_path, const char *idx_path, wint_t delim, cons
 
 	/* Assert motto text file exists and is readable. */
 	if (   0 != stat( txt_path, &txt_stat )
-		|| ( !S_ISREG( txt_stat.st_mode ) && !S_ISLNK( txt_stat.st_mode ) )
+		|| !S_ISREG( txt_stat.st_mode )
 		|| NULL == ( txt_fp = fopen( txt_path, "r" ) ) )
 	{
 		err_exit( "Opening %s for reading", txt_path );
@@ -124,8 +120,7 @@ static void motd( const char *txt_path, const char *idx_path, wint_t delim, cons
 	/* Regenerate index, if indicated. */
 	if (   regen_idx 
 		|| 0 != stat( idx_path, &idx_stat )
-		|| ( !S_ISREG( idx_stat.st_mode ) && !S_ISLNK( idx_stat.st_mode ) )
-		|| 0 != stat( txt_path, &txt_stat ) 
+		|| !S_ISREG( idx_stat.st_mode )
 		|| idx_stat.st_mtime < txt_stat.st_mtime )
 	{
 		motto_cnt = create_idx( txt_fp, idx_path, delim );
@@ -133,7 +128,7 @@ static void motd( const char *txt_path, const char *idx_path, wint_t delim, cons
 
 	/* Try to read one offset entry picked at random from index file. */
 	if (   0 == stat( idx_path, &idx_stat )
-		&& ( S_ISREG( idx_stat.st_mode ) || S_ISLNK( idx_stat.st_mode ) )
+		&& S_ISREG( idx_stat.st_mode )
 		&& idx_stat.st_mtime >= txt_stat.st_mtime
 		&& NULL != ( idx_fp = fopen( idx_path, "r" ) ) )
 	{
