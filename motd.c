@@ -52,7 +52,7 @@ static void print_usage( const char *argv0 )
         "  -s : PRNG state cache file; default: $HOME/%s.\n"
         "  -r : Force index file to be rebuilt.\n"
         "       Note: Missing or outdated index files are automatically (re)generated.\n"
-        "  -c : clear index and PRNG caches.\n"
+        "  -c : Remove index and PRNG cache dir and exit.\n"
         "  -h : Display this help text and exit.\n"
         , 
         p, 
@@ -365,6 +365,7 @@ int main( int argc, char *argv[] )
     {
         unlink( idx_path );
         unlink( rng_path );
+        exit( 0 != rmdir( cache_dir ) ? EXIT_FAILURE : EXIT_SUCCESS );
     }
     
     /* Initialize PRNG state from file; use time + pid for failsafe. */
