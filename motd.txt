@@ -1,3 +1,25 @@
+Those who can't reach it teach it.
+÷
+The numbers you can count are not the real numbers.
+÷
+What plane crash? Uh, that was a rough landing! 
+Anyway, where's my bags?  -- Brady Haran in H.I. #63
+÷
+When microorganisms haggle over evolution, 
+  the universe remains silent.
+÷
+Happiness is a warm killfile.
+÷
+I reject your reality and substitute my own. -- Adam Savage
+÷
+If you're not part of the solution, you're part of the precipitate.
+÷
+Quite frankly, everything else in systemd at least has an _excuse_
+ for it. The binary logging is a pile of unadulterated shit.
+         -- Linus Thorvalds on LKML 25 Apr 2016
+÷
+A tit a day keeps the vet away.
+÷
 UDP joke:
    I don't care if you get it!
 ÷
@@ -70,13 +92,11 @@ We have forty million reasons for failure,
 ÷
 Man is a tool-making animal.
 ÷
-"640K ought to be enough for anybody." Bill Gates '81
+"640K ought to be enough for anybody." -- Bill Gates '81
 ÷
 "Apple" (c) Copyright 1767, Sir Isaac Newton.
 ÷
 "Build a watch in 179 easy steps" by C. Forsberg.
-÷
-"C++" should have been called "D"
 ÷
 "COINCIDENCE" happens.
 ÷
@@ -126,7 +146,7 @@ And if one bad cluster should accidentally fail...
 ÷
 .ASM programmers drive stick shifts.
 ÷
-/EARTH is 98% full. Please delete anybody you can
+/EARTH is 98% full. Please delete anybody you can.
 ÷
 1 + 1 = ?  Ask my calculator.
 ÷
@@ -160,9 +180,9 @@ And if one bad cluster should accidentally fail...
 ÷
 668 - Neighbor of the Beast
 ÷
-69 is fine...but 77'll get me 8 more...
+69 is fine ... but 77'll get me 8 more ...
 ÷
-9 out of 10 dentists recommend oral sex....
+9 out of 10 dentists recommend oral sex.
 ÷
 A Buddhist nudist practices yoga bare.
 ÷
@@ -180,7 +200,7 @@ A can of worms full of Pandora's boxes.
 ÷
 A chicken is an egg's way of producing more eggs.
 ÷
-A closed mind gathers no intelligence
+A closed mind gathers no intelligence.
 ÷
 A closed mouth gathers no feet.
 ÷
@@ -198,7 +218,7 @@ A diplomat thinks twice before saying nothing.
 ÷
 A dirty book is rarely dusty.
 ÷
-A drawing pin is an excited Smartie
+A drawing pin is an excited Smartie.
 ÷
 A few cans short of a six pack, Six short.
 ÷
@@ -262,13 +282,13 @@ Alex Haley was adopted!
 ÷
 All E-mail gladly received. Offensive reply ASAP.
 ÷
-All I want is a warm bed, a kind word and unlimited power
+All I want is a warm bed, a kind word and unlimited power.
 ÷
 All generalizations are bad.
 ÷
 All hope abandon, ye who enter messages here.
 ÷
-All hope abandon, ye who press ENTER here
+All hope abandon, ye who press ENTER here!
 ÷
 All in all just another brick in the wall.
 ÷
@@ -328,7 +348,7 @@ And don't start a sentence with a conjunction.
 ÷
 And he disappeared in a puff of logic.
 ÷
-And how can this be?  For he IS the Kumquat Haagen
+And how can this be?  For he IS the Kumquat Haagen.
 ÷
 And it's only ones and zeros.
 ÷
@@ -374,7 +394,7 @@ Atheist = Deity Disadvantaged.
 ÷
 Bald: follicularly challenged.
 ÷
-Beware of programmers carrying screwdrivers
+Beware of programmers carrying screwdrivers!
 ÷
 Black Holes are Out of Sight
 ÷
@@ -406,13 +426,13 @@ Brain over - Insert coin
 ÷
 Brain: The apparatus with which we think that we think.
 ÷
-Breast size multiplied by IQ always equals 69
+Breast size multiplied by IQ always equals 69.
 ÷
 Breathing may be hazardous to your health.
 ÷
 Britannia waives the rules.
 ÷
-Bug off, Banana Nose; Relieve mine eyes
+Bug off, Banana Nose; Relieve mine eyes.
 ÷
 Bugger me with a fish fork..
 ÷
@@ -428,7 +448,7 @@ Bumper sticker on a hearse:  I'd rather be breathing
 ÷
 Bungee Jumper? Catch you on the rebound.
 ÷
-Bureaucrats cut red tape, lengthwise
+Bureaucrats cut red tape, lengthwise.
 ÷
 Bus error (Passengers dumped)
 ÷
@@ -838,7 +858,7 @@ Easter is canceled this year.  They've found the body.
 ÷
 Eat Crap!  10 Trillion flies can't be wrong.
 ÷
-Eat the rich, the poor are tough and stringy
+Eat the rich, the poor are tough and stringy.
 ÷
 Egghead: What Mrs. Dumpty gave Humpty
 ÷
@@ -2404,7 +2424,7 @@ Oxymoron: Soviet Union.
 ÷
 PCBackup: 1 of 1362 disks.
 ÷
-PI seconds is a nanocentury. 
+PI seconds is a nanocentury.
    - Tom Duff, Bell Labs
 ÷
 PIMP: a fornicaterer.
@@ -2831,7 +2851,7 @@ Supercalifragilisticexpialidocius
 ÷
 Supernovae are a Blast
 ÷
-Support bacteria - it's the only culture some people have! 
+Support bacteria - it's the only culture some people have!
 ÷
 Support the helpless victims of computers.
 ÷
@@ -3243,7 +3263,7 @@ WOMEN: Weird Obnoxious Male Enticing Nymphs
 ÷
 WWhhaatt   ddooeess   dduupplleexx    mmeeaann??
 ÷
-WYTYSYDG-What you thought you saw, you didn't get.
+WYTYSYDG - What you thought you saw, you didn't get.
 ÷
 Waiter, there's no fly in my soup! - Kermit
 ÷
@@ -3273,7 +3293,7 @@ Was it as good for you, as it was for me?
 ÷
 Was that your wife I saw in that GIF.
 ÷
-Was today really Necessary?
+Was today really necessary?
 ÷
 Wasting time is an important part of living.
 ÷
@@ -3283,13 +3303,13 @@ Wave to your neighbor, Word to your mother.
 ÷
 We are not a clone.
 ÷
-We are the people our parents warned us about
+We are the people our parents warned us about.
 ÷
 We don't care. We don't have to. We're Telecom...
 ÷
 We have here the latest in primitive technology.
 ÷
-We seem to have juxtaposed an impasse here
+We seem to have juxtaposed an impasse here.
 ÷
 We take drugs very seriously at my house...
 ÷
@@ -3470,7 +3490,7 @@ I want to die in my sleep like my father,
 ÷
 Artist seeks Boss with vision impairment.
 ÷
-Beam me aboard, Scotty!" "Will a 2X4 do, Captain?
+"Beam me aboard, Scotty!" "Will a 2X4 do, Captain?"
 ÷
 Daddy, what does FORMATTING DRIVE C mean?
 ÷
@@ -3490,7 +3510,7 @@ A professor is one who talks in someone else's sleep.
 ÷
 A good pun is its own reword.
 ÷
-A belly button is for salt when you eat celery in bed. 
+A belly button is for salt when you eat celery in bed.
 ÷
 A flying saucer results when a nudist spills his coffee.
 ÷
@@ -3520,7 +3540,7 @@ After all is said and done, usually more is said.
 ÷
 Air is water with holes in it.
 ÷
-Air travel: 
+Air travel:
    Breakfast in London, dinner in New York, luggage in Brazil.
 ÷
 Alcoholic:  Someone you don't like who drinks as much as you do.
@@ -3532,7 +3552,7 @@ All wiyht.  Rho sritched mg kegtops awound?
 All I ask is to prove that money can't make me happy.
 ÷
 All rights left.
- All lefts reserved. 
+ All lefts reserved.
   All reserves removed.
    All removes right.
 ÷
@@ -4242,7 +4262,7 @@ Save the Rainforest! Eat a vegetarian!
 ÷
 Save the whales! Collect the whole set!
 ÷
-Sign seen on door:  C  I  T  Y   P  L  A  N  N  ING 
+Sign seen on door:  C  I  T  Y   P  L  A  N  N  ING
 ÷
 Sign on bank: We can loan you enough money
  to get you completely out of debt.
@@ -4543,10 +4563,10 @@ Everything I am today I owe to people whom it is now too late to punish.
 ÷
 Beware!  I can do great harm to myself, and blame it all on you.
 ÷
-If you never try anything new, you'll miss 
+If you never try anything new, you'll miss
  some of the world's great disappointments.
 ÷
-I try to take one day at a time, 
+I try to take one day at a time,
    but sometimes several days attack me at once.
 ÷
 Unlike most people, I'm just an average person.
@@ -4610,8 +4630,8 @@ If you try hard and persevere you will eventually gain our utter contempt.
 ÷
 Good luck on your crusade.  Send me a report when you're done.
 ÷
-Thanks to higher education and mass communications, 
- ignorance and superstition have been brought to new and undreamed-of 
+Thanks to higher education and mass communications,
+ ignorance and superstition have been brought to new and undreamed-of
  levels of sophistication.
 ÷
 Just because it's hard ... doesn't mean it's worthwhile.
@@ -4632,15 +4652,15 @@ I am eager to help you with your problems.
 When you've finally saved the world from all the foolish people
   -- who saves it from you?
 ÷
-You don't know the meaning of confusion and misery until 
+You don't know the meaning of confusion and misery until
  you have searched for enlightenment and happiness.
 ÷
 How arrogant of you not to accept my obvious superiority.
 ÷
 You don't need to fix me.  I am not broken.
 ÷
-I have it all figured out.  So don't go ruining it all 
-                               by asking me to explain.
+I have it all figured out.
+ So don't go ruining it all by asking me to explain.
 ÷
 If I have to ride in the back of the bus, I'd rather walk.
 ÷
@@ -4664,7 +4684,7 @@ Thanks to the people who wanted to help me with my problems,
   I finally realized the problem was the people
   who wanted to help me with my problems.
 ÷
-Money won't buy happiness 
+Money won't buy happiness,
    but it's good for a few laughs every now and then.
 ÷
 This book is so profound, it bores me to death.
@@ -4704,7 +4724,7 @@ I never call someone a friend if they're not around to deny it.
 The essence of humility is to put yourself in someone else's shoes
  and ask if you could do better.
 ÷
-Just because I had it coming to me 
+Just because I had it coming to me
  doesn't mean you're not on my blacklist for doing it to me.
 ÷
 I help others when the opportunity arises.
@@ -4728,7 +4748,7 @@ Day to day life requires a certain small but unceasing courage.
 ÷
 The older I get the more I understand why people become alcoholics.
 ÷
-What fun is it to be an expert 
+What fun is it to be an expert
    if you have to make yourself easy to understand?
 ÷
 I've never had bad luck.  Just fits of stupidity.
@@ -4736,12 +4756,12 @@ I've never had bad luck.  Just fits of stupidity.
 I like to think I am a good-natured person,
    despite the lack of supporting evidence.
 ÷
-Body language, vague as it is, 
+Body language, vague as it is,
    is much less misleading than the spoken word.
 ÷
 He thinks he's a prophet, but he's really a loss.
 ÷
-Nothing can cause more pain, agony, and bloodshed 
+Nothing can cause more pain, agony, and bloodshed
    than the belief that things will happen the way you expect them to.
 ÷
 If you don't know what it means, it probably doesn't mean anything.
@@ -4750,7 +4770,7 @@ Let's cut through all the logic and get on with the bullshit.
 ÷
 There's no need to be concerned.  Your approval is not required.
 ÷
-You may have nothing to say, 
+You may have nothing to say,
    but I must admit you say it with impressive conviction.
 ÷
 Stand in the middle of the road...
@@ -4758,17 +4778,17 @@ Stand in the middle of the road...
 ÷
 The more crap you take, the more crap you get.
 ÷
-The next best thing to doing something smart 
+The next best thing to doing something smart
    is not doing something stupid.
 ÷
-An easily understood, valid half-truth 
+An easily understood, valid half-truth
    is more useful than a detailed, incomprehensible truth.
 ÷
 This is servitude, to serve the unwise.
 ÷
 You're telling me questions and asking me lies.
 ÷
-You can't lose what you ain't got, 
+You can't lose what you ain't got,
    you can't miss what you ain't never had.
 ÷
 I ain't bitter, I'm just bitter-sweet.
@@ -4790,7 +4810,7 @@ Never wrestle a pig.
 ÷
 Dealing with the government is like kicking a 300-pound sponge.
 ÷
-Pride makes some men ridiculous 
+Pride makes some men ridiculous
    but prevents others from becoming so.
 ÷
 If you try to please everyone, no one will like it.
@@ -4807,7 +4827,7 @@ Kindness is in our power, but fondness is not.
 Never get into a farting contest with a skunk.
 ÷
 You are not thinking.  You are merely being logical.
-  --  Neils Bohr to Albert Einstein
+  --  Niels Bohr to Albert Einstein
 ÷
 I used to believe in reincarnation, but that was in a previous life.
 ÷
@@ -4819,7 +4839,7 @@ If it does not smell anymore, you are in it to the eyes.
 ÷
 I think, therefore I'm confused.
 ÷
-It's amazing to find how long it takes 
+It's amazing to find how long it takes
    to complete something you're not working on.
 ÷
 The more you stir manure, the more it smells.
@@ -4827,3 +4847,7 @@ The more you stir manure, the more it smells.
 Love is doomed to fail because men are stupid and women are crazy.
 ÷
 Reality is what refuses to go away when I stop believing in it.
+÷
+Platonic solids for my real friends and real solids for my platonic friends!
+÷
+Well-meant is the opposite of well done.

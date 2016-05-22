@@ -24,7 +24,7 @@ DEP		:= $(OBJ:%.o=%.d)
 SELF    := $(lastword $(MAKEFILE_LIST))
 
 
-.PHONY: all clean
+.PHONY: all clean distclean
 
 all: $(BIN)
 
@@ -32,11 +32,19 @@ $(BIN): $(OBJ) $(SELF)
 	$(LD) $(LDFLAGS) $(OBJ) -o $(BIN)
 	$(STRIP) $(BIN)
 
-%.o: %.c $(SELF)
+$(OBJ): config.h 
+
+%.o: %.c $(SELF) config.h 
 	$(CC) -c $(CFLAGS) -o $*.o $*.c 
+	
+config.h: config.def.h
+	cp $< $@
 
 clean:
 	$(RM) $(BIN) $(OBJ) $(DEP)
+	
+distclean: clean
+	$(RM) config.h
 
 -include $(DEP)
 
