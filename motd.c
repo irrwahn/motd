@@ -6,6 +6,8 @@
  * rewriting a trivial tool.  Use at own risk!
  * 
  * Changelog:
+ * 2016-05-22   Auto-create cache dir; added clear cache option; bugfixes.
+ * 2016-05-22   Added prng state caching; changed default paths.
  * 2016-02-05   Added UTF-8 support, changed default separator.
  * 2016-02-04   Added a more decent PRNG.
  * 2016-02-03   Rewrote large portions of code w/ several improvements.
@@ -44,16 +46,18 @@ static void print_usage( const char *argv0 )
         "  -d : Set record delimiter used in mottofile to single character c;\n"
         "       default: '÷' (division sign, codepoint 247).\n"
         "  -D : Same as -d, except set delimiter to codepoint number n.\n"
-        "  -t : Motto text file; default: %s.\n"
-        "  -i : Motto index file; default: %s.\n"
-        "  -s : PRNG state cache file; default: %s.\n"
+        "  -t : Motto text file; default: $HOME/%s;\n"
+        "       fall-back system path: %s.\n"
+        "  -i : Motto index file; default: $HOME/%s.\n"
+        "  -s : PRNG state cache file; default: $HOME/%s.\n"
         "  -r : Force index file to be rebuilt.\n"
         "       Note: Missing or outdated index files are automatically (re)generated.\n"
+        "  -c : clear index and PRNG caches.\n"
         "  -h : Display this help text and exit.\n"
         , 
         p, 
         p,
-        TXT_FILE,
+        TXT_FILE, TXT_FILE2,
         IDX_FILE,
         RNG_FILE
     );
@@ -225,13 +229,15 @@ static void motd( const char *txt_path, const char *idx_path, wint_t delim, cons
 int main( int argc, char *argv[] )
 {
     int opt;
-    const char *optstr = ":d:D:i:s:t:hr";
+    const char *optstr = ":d:D:i:s:t:chr";
     char txt_path[PATH_MAX] = "";
     char idx_path[PATH_MAX] = "";
     char rng_path[PATH_MAX] = "";
+    char cache_dir[PATH_MAX] = "";
     char *home = ".";
     wchar_t delim = MOT_DELIM;
     int regen_idx = 0;
+    int clear_cache = 0;
     char *p;
     int n;
     FILE *rng_fp;
@@ -244,6 +250,9 @@ int main( int argc, char *argv[] )
     {
         switch ( opt )
         {
+        case 'c':
+            clear_cache = 1;
+            break;
         case 'd':
             if ( 0 >= mbtowc( &delim, optarg, strlen( optarg ) ) )
             {
@@ -272,6 +281,7 @@ int main( int argc, char *argv[] )
                 err_exit( "Encoding error in snprintf." );
             if ( (int)sizeof rng_path <= n )
                 err_exit( "PRNG state file name length exceeds %d.", sizeof rng_path );
+            break;
         case 't':
             n = snprintf( txt_path, sizeof txt_path, "%s", optarg );
             if ( 0 > n )
@@ -324,6 +334,14 @@ int main( int argc, char *argv[] )
                 err_exit( "Motto file name length exceeds %d.", sizeof txt_path );
         }
     }
+    
+    n = snprintf( cache_dir, sizeof cache_dir, "%s/%s", home, CACHE_PATH );
+    if ( 0 > n )
+        err_exit( "Encoding error in snprintf." );
+    if ( (int)sizeof cache_dir <= n )
+        err_exit( "Index file name length exceeds %d.", sizeof cache_dir );
+    /* Effective errors creating cache dir will be caught by subsequent file operations! */
+    mkdir( cache_dir, 0700 );    
 
     if ( '\0' == *idx_path )
     {
@@ -341,6 +359,12 @@ int main( int argc, char *argv[] )
             err_exit( "Encoding error in snprintf." );
         if ( (int)sizeof rng_path <= n )
             err_exit( "PRNG state file name length exceeds %d.", sizeof rng_path );
+    }
+    
+    if ( clear_cache )
+    {
+        unlink( idx_path );
+        unlink( rng_path );
     }
     
     /* Initialize PRNG state from file; use time + pid for failsafe. */
