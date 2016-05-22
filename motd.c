@@ -234,7 +234,7 @@ int main( int argc, char *argv[] )
     char idx_path[PATH_MAX] = "";
     char rng_path[PATH_MAX] = "";
     char cache_dir[PATH_MAX] = "";
-    char *home = ".";
+    char *home_dir = ".";
     wchar_t delim = MOT_DELIM;
     int regen_idx = 0;
     int clear_cache = 0;
@@ -315,59 +315,40 @@ int main( int argc, char *argv[] )
         err_exit( "Excess non-option command line argument '%s'.", argv[optind] );
     }
     
-    if ( NULL == ( home = getenv( "HOME" ) ) )
-        home = ".";
+    if ( NULL == ( home_dir = getenv( "HOME" ) ) )
+        home_dir = ".";
     
-    if ( '\0' == *txt_path )
-    {
-        n = snprintf( txt_path, sizeof txt_path, "%s/%s", home, TXT_FILE );
-        if ( 0 > n )
-            err_exit( "Encoding error in snprintf." );
-        if ( (int)sizeof txt_path <= n )
-            err_exit( "Motto file name length exceeds %d.", sizeof txt_path );
-        if ( 0 != access( txt_path, F_OK ) )
-        {   /* Fall back to (absolute, system) path. */
-            n = snprintf( txt_path, sizeof txt_path, "%s", TXT_FILE2 );
-            if ( 0 > n )
-                err_exit( "Encoding error in snprintf." );
-            if ( (int)sizeof txt_path <= n )
-                err_exit( "Motto file name length exceeds %d.", sizeof txt_path );
-        }
-    }
-    
-    n = snprintf( cache_dir, sizeof cache_dir, "%s/%s", home, CACHE_PATH );
+    n = snprintf( cache_dir, sizeof cache_dir, "%s/%s", home_dir, CACHE_PATH );
     if ( 0 > n )
         err_exit( "Encoding error in snprintf." );
     if ( (int)sizeof cache_dir <= n )
-        err_exit( "Index file name length exceeds %d.", sizeof cache_dir );
-    /* Effective errors creating cache dir will be caught by subsequent file operations! */
+        err_exit( "Cache directory name length exceeds %d.", sizeof cache_dir );
+    if ( clear_cache )
+    {
+        unlink( idx_path );
+        unlink( rng_path );
+        if ( 0 != rmdir( cache_dir ) )
+			err_exit( "Could not remove cache directory %s.", cache_dir );
+        exit( EXIT_SUCCESS );
+    }
+    /* Errors creating cache dir will effectively caught by subsequent file operations! */
     mkdir( cache_dir, 0700 );    
-
     if ( '\0' == *idx_path )
     {
-        n = snprintf( idx_path, sizeof idx_path, "%s/%s", home, IDX_FILE );
+        n = snprintf( idx_path, sizeof idx_path, "%s/%s", home_dir, IDX_FILE );
         if ( 0 > n )
             err_exit( "Encoding error in snprintf." );
         if ( (int)sizeof idx_path <= n )
             err_exit( "Index file name length exceeds %d.", sizeof idx_path );
     }
-    
     if ( '\0' == *rng_path )
     {
-        n = snprintf( rng_path, sizeof rng_path, "%s/%s", home, RNG_FILE );
+        n = snprintf( rng_path, sizeof rng_path, "%s/%s", home_dir, RNG_FILE );
         if ( 0 > n )
             err_exit( "Encoding error in snprintf." );
         if ( (int)sizeof rng_path <= n )
             err_exit( "PRNG state file name length exceeds %d.", sizeof rng_path );
     }
-    
-    if ( clear_cache )
-    {
-        unlink( idx_path );
-        unlink( rng_path );
-        exit( 0 != rmdir( cache_dir ) ? EXIT_FAILURE : EXIT_SUCCESS );
-    }
-    
     /* Initialize PRNG state from file; use time + pid for failsafe. */
     if ( NULL != ( rng_fp = fopen( rng_path, "r" ) ) )
     {
@@ -377,15 +358,33 @@ int main( int argc, char *argv[] )
     else
         srandom_r( &rng_ctx, time( NULL ) + clock() + getpid() );
     
+    if ( '\0' == *txt_path )
+    {
+        n = snprintf( txt_path, sizeof txt_path, "%s/%s", home_dir, TXT_FILE );
+        if ( 0 > n )
+            err_exit( "Encoding error in snprintf." );
+        if ( (int)sizeof txt_path <= n )
+            err_exit( "Motto file name length exceeds %d.", sizeof txt_path );
+        if ( 0 != access( txt_path, R_OK ) )
+        {   /* Fall back to alternative absolute system path. */
+            n = snprintf( txt_path, sizeof txt_path, "%s", TXT_FILE2 );
+            if ( 0 > n )
+                err_exit( "Encoding error in snprintf." );
+            if ( (int)sizeof txt_path <= n )
+                err_exit( "Motto file name length exceeds %d.", sizeof txt_path );
+        }
+    }
+    
     errno = 0;
     motd( txt_path, idx_path, delim, regen_idx );
 
     /* Save PRNG state to file. */
-    if ( NULL != ( rng_fp = fopen( rng_path, "w" ) ) )
-    {
-        fwrite( &rng_ctx, sizeof rng_ctx, 1, rng_fp );
-        fclose( rng_fp );
+    if ( NULL == ( rng_fp = fopen( rng_path, "w" ) )
+		|| 1 != fwrite( &rng_ctx, sizeof rng_ctx, 1, rng_fp ) )
+	{
+		err_exit( "Could not write PRNG state to %s.", rng_path );
     }
+    fclose( rng_fp );
 
     exit( EXIT_SUCCESS );
 }
