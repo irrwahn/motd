@@ -323,14 +323,6 @@ int main( int argc, char *argv[] )
         err_exit( "Encoding error in snprintf." );
     if ( (int)sizeof cache_dir <= n )
         err_exit( "Cache directory name length exceeds %d.", sizeof cache_dir );
-    if ( clear_cache )
-    {
-        unlink( idx_path );
-        unlink( rng_path );
-        if ( 0 != rmdir( cache_dir ) )
-			err_exit( "Could not remove cache directory %s.", cache_dir );
-        exit( EXIT_SUCCESS );
-    }
     /* Errors creating cache dir will effectively caught by subsequent file operations! */
     mkdir( cache_dir, 0700 );    
     if ( '\0' == *idx_path )
@@ -348,6 +340,14 @@ int main( int argc, char *argv[] )
             err_exit( "Encoding error in snprintf." );
         if ( (int)sizeof rng_path <= n )
             err_exit( "PRNG state file name length exceeds %d.", sizeof rng_path );
+    }
+    if ( clear_cache )
+    {
+        unlink( idx_path );
+        unlink( rng_path );
+        if ( 0 != rmdir( cache_dir ) )
+			err_exit( "Could not remove cache directory %s.", cache_dir );
+        exit( EXIT_SUCCESS );
     }
     /* Initialize PRNG state from file; use time + pid for failsafe. */
     if ( NULL != ( rng_fp = fopen( rng_path, "r" ) ) )
