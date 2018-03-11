@@ -1,8 +1,15 @@
 /*
+ * This file is part of the motd project.
+ *
+ * Copyright 2016 Urban Wallasch <irrwahn35@freenet.de>
+ * See LICENSE file for more details.
+ *
+ */
+/*
  * Motd - pick a random tagline from an indexed plain text library.
- * 
+ *
  * Compile-time default configuration presets.
- * 
+ *
  * Changelog:
  * 2016-05-22   Separated cache dir path from cache file paths.
  * 2016-05-22   Initial version.
@@ -14,7 +21,7 @@
 /* Motto file paths: */
 #define TXT_FILE    ".local/share/motd/motd.txt" /* Relative to $HOME. */
 /* Fall-back to absolute system path. */
-#define TXT_FILE2   "/usr/share/motd/motd.txt"   
+#define TXT_FILE2   "/usr/share/motd/motd.txt"
 
 /* Index and PRNG state caches: */
 #define CACHE_PATH	".cache/motd" /* Relative to $HOME. */

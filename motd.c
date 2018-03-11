@@ -1,10 +1,17 @@
 /*
+ * This file is part of the motd project.
+ *
+ * Copyright 2016 Urban Wallasch <irrwahn35@freenet.de>
+ * See LICENSE file for more details.
+ *
+ */
+/*
  * Motd - pick a random tagline from an indexed plain text library.
- * 
- * This is basically an example for how far things can get out  
- * of hand, once you start using defensive, robust coding while 
+ *
+ * This is basically an example for how far things can get out
+ * of hand, once you start using defensive, robust coding while
  * rewriting a trivial tool.  Use at own risk!
- * 
+ *
  * Changelog:
  * 2016-05-22   Auto-create cache dir; added clear cache option; bugfixes.
  * 2016-05-22   Added prng state caching; changed default paths.
@@ -40,7 +47,7 @@ static random_ctx_t rng_ctx = RANDOM_CTX_INITIALIZER;
 static void print_usage( const char *argv0 )
 {
     const char *p = ( NULL == ( p = strrchr( argv0, '/' ) ) ) ? argv0 : p+1;
-    fprintf( stderr, 
+    fprintf( stderr,
         "%s: Randomly pick motto of the day from an indexed plain text file.\n"
         "Usage: %s [-h] [-r] [-d c] [-D n] [-t mottofile] [-i indexfile] [-s rngfile]\n"
         "  -d : Set record delimiter used in mottofile to single character c;\n"
@@ -54,8 +61,8 @@ static void print_usage( const char *argv0 )
         "       Note: Missing or outdated index files are automatically (re)generated.\n"
         "  -c : Remove index and PRNG cache dir and exit.\n"
         "  -h : Display this help text and exit.\n"
-        , 
-        p, 
+        ,
+        p,
         p,
         TXT_FILE, TXT_FILE2,
         IDX_FILE,
@@ -76,7 +83,7 @@ static void err_exit( const char *fmt, ... )
     else
         fputc( '\n', stderr );
     va_end( arglist );
-    exit( EXIT_FAILURE );   
+    exit( EXIT_FAILURE );
 }
 
 static long create_idx( FILE *txt_fp, const char *idx_path, const wint_t delim )
@@ -86,13 +93,13 @@ static long create_idx( FILE *txt_fp, const char *idx_path, const wint_t delim )
     struct stat idx_stat;
     FILE *idx_fp = NULL;
 
-    /* Only attempt to write to somewhat sane locations.  Ignore 
-     * errors, the index file is not essential - we still want the 
+    /* Only attempt to write to somewhat sane locations.  Ignore
+     * errors, the index file is not essential - we still want the
      * side effect of counting mottos!
      */
     if ( 0 != stat( idx_path, &idx_stat ) || S_ISREG( idx_stat.st_mode ) )
         idx_fp = fopen( idx_path, "w" );
-    
+
     rewind( txt_fp );
     while ( WEOF != wc )
     {
@@ -103,7 +110,7 @@ static long create_idx( FILE *txt_fp, const char *idx_path, const wint_t delim )
         /* Note: We Increment at least once, even for empty files.
          * Accordingly the index will always have at least one entry.
          */
-        ++motto_cnt;    
+        ++motto_cnt;
         if ( NULL != idx_fp )
             fwrite( &off, sizeof off, 1, idx_fp );
     }
@@ -131,9 +138,9 @@ static void motd( const char *txt_path, const char *idx_path, wint_t delim, cons
     {
         err_exit( "Opening %s for reading", txt_path );
     }
-    
+
     /* Regenerate index, if indicated. */
-    if (   regen_idx 
+    if (   regen_idx
         || 0 != stat( idx_path, &idx_stat )
         || !S_ISREG( idx_stat.st_mode )
         || idx_stat.st_mtime < txt_stat.st_mtime )
@@ -161,14 +168,14 @@ static void motd( const char *txt_path, const char *idx_path, wint_t delim, cons
         }
         fclose( idx_fp );
     }
-    
+
     /*
-     * We may, or may not, have called create_idx, which may, or may 
-     * not, have created an index file, which we then have attempted 
-     * to read from (or not), which may have been successful. Or not.  
-     * Plus, we may need motto_cnt later in the fall-back code, offset 
+     * We may, or may not, have called create_idx, which may, or may
+     * not, have created an index file, which we then have attempted
+     * to read from (or not), which may have been successful. Or not.
+     * Plus, we may need motto_cnt later in the fall-back code, offset
      * validity notwithstanding.
-     * 
+     *
      * What a mess; do some validation and assert a sane motto count!
      */
     errno = 0;
@@ -177,16 +184,16 @@ static void motd( const char *txt_path, const char *idx_path, wint_t delim, cons
         if ( 0 >= index_cnt )
             err_exit( "No motto candidate eligible; check your text and index files and try -r!" );
         motto_cnt = index_cnt;
-        /* This is the normal path of execution with a proper index 
-         * file. Still, a fabricated index file might not match the 
-         * text file, leading to unexpected results. No easy way to 
-         * check, though. 
+        /* This is the normal path of execution with a proper index
+         * file. Still, a fabricated index file might not match the
+         * text file, leading to unexpected results. No easy way to
+         * check, though.
          */
     }
     else
     {
         /* If both counts are valid, they'd better be equal.
-         * Otherwise something weird has happened to the index file. 
+         * Otherwise something weird has happened to the index file.
          */
         if ( 0 <= index_cnt && motto_cnt != index_cnt )
             err_exit( "Motto index corrupt; check your index file and try -r!" );
@@ -222,7 +229,7 @@ static void motd( const char *txt_path, const char *idx_path, wint_t delim, cons
     }
     while ( ( wc = fgetwc( txt_fp ) ) != WEOF && delim != wc )
         putwchar( wc );
-        
+
     fclose( txt_fp );
 }
 
@@ -241,7 +248,7 @@ int main( int argc, char *argv[] )
     char *p;
     int n;
     FILE *rng_fp;
-    
+
 
     setlocale( LC_CTYPE, "" );
     opterr = 0;
@@ -314,17 +321,17 @@ int main( int argc, char *argv[] )
         print_usage( argv[0] );
         err_exit( "Excess non-option command line argument '%s'.", argv[optind] );
     }
-    
+
     if ( NULL == ( home_dir = getenv( "HOME" ) ) )
         home_dir = ".";
-    
+
     n = snprintf( cache_dir, sizeof cache_dir, "%s/%s", home_dir, CACHE_PATH );
     if ( 0 > n )
         err_exit( "Encoding error in snprintf." );
     if ( (int)sizeof cache_dir <= n )
         err_exit( "Cache directory name length exceeds %d.", sizeof cache_dir );
     /* Errors creating cache dir will effectively caught by subsequent file operations! */
-    mkdir( cache_dir, 0700 );    
+    mkdir( cache_dir, 0700 );
     if ( '\0' == *idx_path )
     {
         n = snprintf( idx_path, sizeof idx_path, "%s/%s", home_dir, IDX_FILE );
@@ -357,7 +364,7 @@ int main( int argc, char *argv[] )
     }
     else
         srandom_r( &rng_ctx, time( NULL ) + clock() + getpid() );
-    
+
     if ( '\0' == *txt_path )
     {
         n = snprintf( txt_path, sizeof txt_path, "%s/%s", home_dir, TXT_FILE );
@@ -374,7 +381,7 @@ int main( int argc, char *argv[] )
                 err_exit( "Motto file name length exceeds %d.", sizeof txt_path );
         }
     }
-    
+
     errno = 0;
     motd( txt_path, idx_path, delim, regen_idx );
 
