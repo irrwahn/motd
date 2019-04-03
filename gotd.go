@@ -1,3 +1,17 @@
+/*
+ * This file is part of the motd project.
+ *
+ * Copyright 2018 Urban Wallasch <irrwahn35@freenet.de>
+ * See LICENSE file for more details.
+ *
+ */
+/*
+ * Gotd - a motd server written in Go.
+ *
+ * Changelog:
+ * 2018-06-10   Initial experimental version.
+ */
+
 package main
 
 import (
