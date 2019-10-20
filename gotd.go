@@ -75,7 +75,7 @@ func initialize() {
 	tracer.Print("UDP port:   ", cfg.bindPortUdp)
 	tracer.Print("motto file: ", cfg.mottoFile)
 	tracer.Print("delimiter:  ", cfg.mottoDelim)
-	tracer.Print("log sink:   ", cfg.verbose)
+	tracer.Print("verbose:    ", cfg.verbose)
 }
 
 func check(err error, msg string) {
@@ -114,7 +114,7 @@ func main() {
 	initialize()
 
 	rawmot, err := ioutil.ReadFile(cfg.mottoFile)
-	check(err, "ioutilTcp.ReadFile "+cfg.mottoFile)
+	check(err, "ioutil.ReadFile "+cfg.mottoFile)
 	mottos = strings.Split(string(rawmot), cfg.mottoDelim)
 	mottoCnt = len(mottos)
 	tracer.Printf("have %d mottos", mottoCnt)
