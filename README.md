@@ -24,9 +24,14 @@ your tastes and rebuild with the modified settings.
 
 ## Installation
 
-Put the binary wherever you see fit. Running `motd -h` displays a short
-help text that will give you an idea of how to invoke it and where to
-place the quotes file. Enjoy!
+Put the motd binary wherever you see fit. Running `motd -h` displays a
+short help text that will give you an idea of how to invoke it and where
+to place the quotes file. Enjoy!
+
+The experimental gotd server allows to fetch a motto over TCP or UDP
+simply by connecting to the configured port (1717 by default). Running
+`gotd -h` shows a short help message outlining the available command
+line options.
 
 ## License
 
